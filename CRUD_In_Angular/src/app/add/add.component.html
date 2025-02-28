@@ -1,0 +1,165 @@
+<div class="container mb-3">
+  <div class="row">
+    <div class="p-2 bg-secondary rounded text-center">Add Employee</div>
+    <div class="container-xl">
+      <form [formGroup]="EmpForm">
+        <div class="form-group">
+          <label for="name">Employee Name : </label>
+          <input
+            type="text"
+            name="name"
+            class="form-control"
+            formControlName="name"
+            [class.is-invalid]="f['name'].invalid && f['name'].touched"
+          />
+        </div>
+        <div
+          class="alert alert-danger"
+          *ngIf="f['name'].invalid && f['name'].touched"
+        >
+          <div *ngIf="f['name'].errors?.['required']">
+            This field is required.
+          </div>
+          <div *ngIf="f['name'].errors?.['minlength']">
+            name must be atleast 3 characters.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="EmpId">Employee Id : </label>
+          <input
+            type="tel"
+            name="EmpId"
+            class="form-control"
+            formControlName="EmployeeId"
+            [class.is-invalid]="
+              f['EmployeeId'].invalid && f['EmployeeId'].touched
+            "
+          />
+        </div>
+        <div class="form-group">
+          <label for="Mo">Mobile-No. : </label>
+          <div class="input-group">
+            <span class="input-group-text">+91</span>
+            <input
+              type="tel"
+              class="form-control"
+              formControlName="MobileNo"
+              [class.is-invalid]="
+                f['MobileNo'].invalid && f['MobileNo'].touched
+              "
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email : </label>
+          <input
+            type="email"
+            name="email"
+            class="form-control"
+            formControlName="Email"
+            [class.is-invalid]="f['Email'].invalid && f['Email'].touched"
+          />
+        </div>
+        <div class="form-group">
+          <label for="gender">Gender : </label>
+          <div class="form-check">
+            <label for="male">Male</label>
+            <input
+              type="radio"
+              value="male"
+              class="form-check-input border-2"
+              formControlName="Gender"
+            />
+          </div>
+          <div class="form-check">
+            <label for="female">Female</label>
+            <input
+              type="radio"
+              value="female"
+              class="form-check-input border-2"
+              formControlName="Gender"
+            />
+          </div>
+          <div class="form-check">
+            <label for="other">Other</label>
+            <input
+              type="radio"
+              value="other"
+              class="form-check-input border-2"
+              formControlName="Gender"
+            />
+          </div>
+        </div>
+        <br />
+        <div class="form-group">
+          Select Position :
+          <div class="input-group">
+            <label class="input-group-text border-2" for="inputGroupSelect01"
+              >Options</label
+            >
+            <select
+              class="form-select"
+              id="inputGroupSelect01"
+              formControlName="Position"
+              [class.is-invalid]="
+                f['Position'].invalid && f['Position'].touched
+              "
+            >
+              <option selected value="">Select Position</option>
+              <option value="Angular">Angular</option>
+              <option value="React">React</option>
+              <option value=".Net">.Net</option>
+            </select>
+          </div>
+          <div
+            class="alert alert-danger"
+            *ngIf="f['Position'].invalid && f['Position'].touched"
+          >
+            <div *ngIf="f['Position'].errors?.['required']">
+              This field is required.
+            </div>
+          </div>
+        </div>
+        <br />
+        <div class="form-group">
+          <label for="">Hobbies:</label>
+          <div class="form-check">
+            <label *ngFor="let hobby of hobbiesArray; index as i">
+              <input
+                type="checkbox"
+                name="hobby"
+                [value]="hobby"
+                (change)="onchange($event)"
+              />
+              {{ hobby }} &nbsp; &nbsp;
+            </label>
+          </div>
+        </div>
+        <br />
+        <label for="">Choose an Image:</label>
+        <div class="input-group mb-3">
+          <input
+            type="file"
+            class="form-control border-2"
+            id="inputGroupFile02"
+          />
+          <label class="input-group-text border-2" for="inputGroupFile02"
+            >Upload</label
+          >
+        </div>
+        <div class="d-grid">
+          <button
+            type="submit"
+            [disabled]="EmpForm.invalid"
+            class="btn btn-primary my-2"
+          >
+            Submit
+          </button>
+        </div>
+        <div class="d-grid">
+          <button type="reset" class="btn btn-danger my-2">Reset</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

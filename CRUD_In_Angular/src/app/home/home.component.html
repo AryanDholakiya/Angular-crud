@@ -1,0 +1,47 @@
+<div class="container-xl">
+  <div class="bg-secondary pt-4">
+    <!-- <button class="btn btn-success p-1 m-2">Add Employee</button> -->
+    <div class="row">
+      <div class="col-sm-6">
+        <h4><b>Manage Employees</b></h4>
+      </div>
+      <div class="col-sm-6 text-end">
+        <button class="btn btn-success me-2 mb-1" (click)="openAddEmp()">
+          <!-- <i class="fa fa-plus-circle"></i><span> ADD</span> -->
+          Add Emp
+        </button>
+      </div>
+    </div>
+    <table class="table table-bordered table-hover">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">Sr No.</th>
+          <th scope="col">First</th>
+          <th scope="col">Last</th>
+          <th scope="col">Handle</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>heyy</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Jacob</td>
+          <td>Thornton</td>
+          <td>heyy</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Larry</td>
+          <td>the Bird</td>
+          <td>heyy</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<router-outlet></router-outlet>
