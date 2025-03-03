@@ -13,22 +13,20 @@
             [class.is-invalid]="f['name'].invalid && f['name'].touched"
           />
         </div>
-        <div
-          class="alert alert-danger"
-          *ngIf="f['name'].invalid && f['name'].touched"
-        >
-          <div *ngIf="f['name'].errors?.['required']">
-            This field is required.
-          </div>
-          <div *ngIf="f['name'].errors?.['minlength']">
-            name must be atleast 3 characters.
-          </div>
+        @if (f['name'].invalid && f['name'].touched) {
+        <div class="alert alert-danger">
+          @if(f['name'].errors?.['required']){
+          <div>This field is required.</div>
+          } @else if(f['name'].errors?.['minlength']) {
+          <div>name must be atleast 3 characters.</div>
+          }
         </div>
+        }
+
         <div class="form-group">
           <label for="EmpId">Employee Id : </label>
           <input
             type="tel"
-            name="EmpId"
             class="form-control"
             formControlName="EmployeeId"
             [class.is-invalid]="
@@ -36,6 +34,16 @@
             "
           />
         </div>
+        @if (f['EmployeeId'].invalid && f['EmployeeId'].touched) {
+        <div class="alert alert-danger">
+          @if(f['EmployeeId'].errors?.['required']){
+          <div>This field is required.</div>
+          } @else if(f['EmployeeId'].errors?.['min']) {
+          <div>Employee Id can not be 0.</div>
+          }
+        </div>
+        }
+
         <div class="form-group">
           <label for="Mo">Mobile-No. : </label>
           <div class="input-group">
@@ -49,6 +57,17 @@
               "
             />
           </div>
+          @if (f['MobileNo'].invalid && f['MobileNo'].touched) {
+          <div class="alert alert-danger">
+            @if(f['MobileNo'].errors?.['required']){
+            <div>This field is required.</div>
+            } @else if(f['MobileNo'].errors?.['minlength']) {
+            <div>Mobile No. must within the 10 digits.</div>
+            }@else {
+            <div>Mobile No. must be have 10 digits.</div>
+            }
+          </div>
+          }
         </div>
         <div class="form-group">
           <label for="email">Email : </label>
@@ -99,7 +118,6 @@
             >
             <select
               class="form-select"
-              id="inputGroupSelect01"
               formControlName="Position"
               [class.is-invalid]="
                 f['Position'].invalid && f['Position'].touched
@@ -111,14 +129,13 @@
               <option value=".Net">.Net</option>
             </select>
           </div>
-          <div
-            class="alert alert-danger"
-            *ngIf="f['Position'].invalid && f['Position'].touched"
-          >
-            <div *ngIf="f['Position'].errors?.['required']">
-              This field is required.
-            </div>
+          @if (f['Position'].invalid && f['Position'].touched) {
+          <div class="alert alert-danger">
+            @if(f['Position'].errors?.['required']){
+            <div>This field is required.</div>
+            }
           </div>
+          }
         </div>
         <br />
         <div class="form-group">
@@ -137,16 +154,25 @@
         </div>
         <br />
         <label for="">Choose an Image:</label>
-        <div class="input-group mb-3">
+        <div class="input-group">
           <input
             type="file"
             class="form-control border-2"
-            id="inputGroupFile02"
+            formControlName="Img"
+            accept="imge/* "
+            [class.is-invalid]="f['Img'].invalid && f['Img'].touched"
           />
           <label class="input-group-text border-2" for="inputGroupFile02"
             >Upload</label
           >
         </div>
+        @if (f['Img'].invalid && f['Img'].touched) {
+        <div class="alert alert-danger">
+          @if(f['Img'].errors?.['required']){
+          <div>This field is required.</div>
+          }
+        </div>
+        }
         <div class="d-grid">
           <button
             type="submit"

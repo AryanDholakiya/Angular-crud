@@ -1,44 +1,57 @@
-<div class="container-xl">
+<div class="container-xl border border-2 py-2">
   <div class="bg-secondary pt-4">
     <!-- <button class="btn btn-success p-1 m-2">Add Employee</button> -->
     <div class="row">
       <div class="col-sm-6">
         <h4><b>Manage Employees</b></h4>
       </div>
-      <div class="col-sm-6 text-end">
-        <button class="btn btn-success me-2 mb-1" (click)="openAddEmp()">
-          <!-- <i class="fa fa-plus-circle"></i><span> ADD</span> -->
-          Add Emp
-        </button>
-      </div>
     </div>
+  </div>
+  <button class="btn btn-success my-2" (click)="openAddEmp()">Add Emp</button>
+  <div class="border border-2">
     <table class="table table-bordered table-hover">
       <thead class="table-dark">
         <tr>
           <th scope="col">Sr No.</th>
-          <th scope="col">First</th>
-          <th scope="col">Last</th>
-          <th scope="col">Handle</th>
+          <th scope="col">Employee Name</th>
+          <th scope="col">Employee Id</th>
+          <th scope="col">Mobile-No.</th>
+          <th scope="col">Email</th>
+          <th scope="col">Position</th>
+          <th scope="col">Hobbies</th>
+          <th scope="col">Image</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>heyy</td>
+          <th scope="row" style="width: 5%">1</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
         </tr>
         <tr>
           <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>heyy</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
         </tr>
         <tr>
           <th scope="row">3</th>
-          <td>Larry</td>
-          <td>the Bird</td>
-          <td>heyy</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
         </tr>
       </tbody>
     </table>

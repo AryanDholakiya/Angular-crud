@@ -12,12 +12,17 @@ export class AddComponent {
 
   EmpForm = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    EmployeeId: new FormControl('', [Validators.required]),
-    MobileNo: new FormControl('', [Validators.required]),
+    EmployeeId: new FormControl('', [Validators.required, Validators.min(1)]),
+    MobileNo: new FormControl('', [
+      Validators.required,
+      Validators.minLength(10),
+      Validators.maxLength(10),
+    ]),
     Email: new FormControl('', [Validators.required]),
     Gender: new FormControl('', [Validators.required]),
     Position: new FormControl('', [Validators.required]),
     hobby: new FormArray([], [Validators.required]),
+    Img: new FormControl('', [Validators.required]),
   });
 
   get f() {
@@ -25,25 +30,24 @@ export class AddComponent {
   }
 
   onchange(e: any) {
-    let checked_value = e.target.value;
-    console.log('checked_value :', checked_value);
-    let checked = e.target.checked;
-    // console.log(`${checked_value} : ${checked}`);
+    const checked_value = e.target.value;
+    const checked = e.target.checked;
+    // console.log('checked_value :', checked_value);
 
-    let checkedArray = this.EmpForm.get(checked_value) as FormArray;
-    console.log('checkedArray :', checkedArray);
+    const hobbyFormArray = this.EmpForm.get('hobby') as FormArray;
+    // console.log('hobbyFormArray :', hobbyFormArray);
 
     if (checked) {
-      checkedArray.push(checked_value);
+      hobbyFormArray.push(new FormControl(checked_value));
     } else {
-      let i: number = 0;
-
-      checkedArray.controls.forEach((item) => {
-        if (item.value == checked_value) {
-          checkedArray.removeAt(i);
-        }
-        i++;
-      });
+      const index = hobbyFormArray.controls.findIndex(
+        (control) => control.value === checked_value
+      );
+      if (index !== -1) {
+        hobbyFormArray.removeAt(index);
+      }
     }
+
+    console.log('Updated hobbies:', hobbyFormArray.value);
   }
 }
