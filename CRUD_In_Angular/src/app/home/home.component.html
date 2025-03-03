@@ -7,7 +7,16 @@
       </div>
     </div>
   </div>
-  <button class="btn btn-success my-2" (click)="openAddEmp()">Add Emp</button>
+  <button
+    class="btn btn-success my-2"
+    [disabled]="isAddEmpOpen"
+    (click)="openAddEmp()"
+  >
+    Add Emp
+  </button>
+  @if(isAddEmpOpen) {
+  <router-outlet></router-outlet>
+  } @else {
   <div class="border border-2">
     <table class="table table-bordered table-hover">
       <thead class="table-dark">
@@ -56,5 +65,5 @@
       </tbody>
     </table>
   </div>
+  }
 </div>
-<router-outlet></router-outlet>

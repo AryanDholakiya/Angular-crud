@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormControl, Validators, FormGroup, FormArray } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add',
@@ -8,6 +9,7 @@ import { FormControl, Validators, FormGroup, FormArray } from '@angular/forms';
   styleUrl: './add.component.css',
 })
 export class AddComponent {
+  constructor(private router: Router) {}
   hobbiesArray: string[] = ['Reading', 'writing', 'singing', 'travelling'];
 
   EmpForm = new FormGroup({
@@ -18,7 +20,10 @@ export class AddComponent {
       Validators.minLength(10),
       Validators.maxLength(10),
     ]),
-    Email: new FormControl('', [Validators.required]),
+    Email: new FormControl('', [
+      Validators.required,
+      Validators.pattern('[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}'),
+    ]),
     Gender: new FormControl('', [Validators.required]),
     Position: new FormControl('', [Validators.required]),
     hobby: new FormArray([], [Validators.required]),
@@ -50,4 +55,16 @@ export class AddComponent {
 
     console.log('Updated hobbies:', hobbyFormArray.value);
   }
+
+  onSubmit() {
+    console.log(this.EmpForm.value);
+    this.router.navigate(['/home']);
+  }
+  gotoHome() {
+    this.router.navigate(['/home']);
+  }
+
+  // gotoHomescreen(newhomepage: boolean) {
+  //   this.isOpen = newhomepage;
+  // }
 }

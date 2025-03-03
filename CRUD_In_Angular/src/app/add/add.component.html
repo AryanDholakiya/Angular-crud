@@ -1,8 +1,20 @@
 <div class="container mb-3">
   <div class="row">
-    <div class="p-2 bg-secondary rounded text-center">Add Employee</div>
+    <div>
+      <div
+        class="p-2 bg-dark rounded d-flex justify-content-between align-items-center"
+      >
+        <div>
+          <i
+            class="ri-arrow-go-back-line border border-2 rounded-5 p-2 ms-0 text-white"
+            (click)="gotoHome()"
+          ></i>
+        </div>
+        <div class="text-white h5">Add Employee</div>
+      </div>
+    </div>
     <div class="container-xl">
-      <form [formGroup]="EmpForm">
+      <form [formGroup]="EmpForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
           <label for="name">Employee Name : </label>
           <input
